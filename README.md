@@ -14,7 +14,7 @@ API](https://emscripten.org/docs/api_reference/Filesystem-API.html) on it.
 The following example reads `data.txt` in an IDBFS mounted on `/idbfs`.
 
 ```javascript
-const idbfsModule = await import('https://unpkg.com/idbfs/idbfs.js');
+const idbfsModule = await import('https://unpkg.com/@irori/idbfs/idbfs.js');
 const idbfs = await idbfsModule.default();
 
 idbfs.FS.mkdir('/idbfs');
