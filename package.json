@@ -12,8 +12,12 @@
   ],
   "main": "idbfs.js",
   "type": "module",
+  "types": "idbfs.d.ts",
   "scripts": {
     "build": "make"
   },
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "dependencies": {
+    "@types/emscripten": "^1.39.8"
+  }
 }
