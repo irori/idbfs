@@ -5,6 +5,8 @@ This library provides access to the Emscripten file system, including
 It can be used to manipulate the contents of IDBFS stored by other Emscripten
 apps.
 
+## Usage
+
 This is nothing more than an empty Emscripten program compiled with IDBFS
 enabled, so you can use the [Emscripten file system
 API](https://emscripten.org/docs/api_reference/Filesystem-API.html) on it.
