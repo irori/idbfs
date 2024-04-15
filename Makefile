@@ -3,7 +3,8 @@ EMFLAGS += -s WASM=0 -s ENVIRONMENT=web
 EMFLAGS += -s FORCE_FILESYSTEM=1
 EMFLAGS += -s 'EXPORTED_RUNTIME_METHODS=FS,IDBFS'
 EMFLAGS += -lidbfs.js
-EMFLAGS += -O2 --memory-init-file 0
+EMFLAGS += -O2
+EMFLAGS += --emit-tsd=idbfs.d.ts
 
 idbfs.js: empty.c Makefile
 	emcc $(EMFLAGS) -o $@ $<

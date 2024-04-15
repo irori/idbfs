@@ -16,8 +16,5 @@
   "scripts": {
     "build": "make"
   },
-  "license": "Unlicense",
-  "dependencies": {
-    "@types/emscripten": "^1.39.8"
-  }
+  "license": "Unlicense"
 }
