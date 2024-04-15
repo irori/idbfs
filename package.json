@@ -4,7 +4,7 @@
   "author": "irori <irorin@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/irori/idbfs.git"
+    "url": "git+https://github.com/irori/idbfs.git"
   },
   "description": "Library for accessing Emscripten IDBFS",
   "keywords": [
