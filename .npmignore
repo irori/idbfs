@@ -1,3 +1,5 @@
 Makefile
 empty.c
 irori-idbfs-*.tgz
+.github
+emsdk-cache
