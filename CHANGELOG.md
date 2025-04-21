@@ -1,3 +1,7 @@
+## 0.5.0 - 2025-04-21
+- Rebuilt with Emscripten 4.0.7
+- `idbfs.js` is no longer built with `USE_ES6_IMPORT_META=0`, which was removed in Emscripten 4.0.4
+
 ## 0.4.0 - 2025-01-20
 - Rebuilt with Emscripten 4.0.1
 
