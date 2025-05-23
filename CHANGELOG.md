@@ -1,3 +1,6 @@
+## 0.5.1 - 2025-05-24
+- Added empty `idbfs.wasm` file to avoid errors with JS bundlers (#1)
+
 ## 0.5.0 - 2025-04-21
 - Rebuilt with Emscripten 4.0.7
 - `idbfs.js` is no longer built with `USE_ES6_IMPORT_META=0`, which was removed in Emscripten 4.0.4
