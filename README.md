@@ -5,6 +5,11 @@ This library provides access to the Emscripten file system, including
 It can be used to manipulate the contents of IDBFS stored by other Emscripten
 apps.
 
+## Versioning
+
+The version number of this package tracks the version of Emscripten used to
+build it. For example, `6.0.0` is built with Emscripten 6.0.0.
+
 ## Usage
 
 This is nothing more than an empty Emscripten program compiled with IDBFS

@@ -1,3 +1,8 @@
+## 6.0.0 - 2026-06-15
+- The version number now tracks the Emscripten version used to build the library
+- Rebuilt with Emscripten 6.0.0
+- The minimum supported browser versions were raised (Chrome 85, Firefox 79, Safari 14.1)
+
 ## 0.5.1 - 2025-05-24
 - Added empty `idbfs.wasm` file to avoid errors with JS bundlers (#1)
 
