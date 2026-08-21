@@ -1,0 +1,33 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Read Emscripten version
+      id: emsdk
+      run: echo "version=$(node -p 'require("./package.json").version')" >> "$GITHUB_OUTPUT"
+
+    - uses: actions/cache@v5
+      with:
+        path: emsdk-cache
+        key: ${{ steps.emsdk.outputs.version }}-${{ runner.os }}
+
+    - uses: emscripten-core/setup-emsdk@v16
+      with:
+        version: ${{ steps.emsdk.outputs.version }}
+        actions-cache-folder: emsdk-cache
+
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 24
+
+    - run: npm ci && npm run build && npm pack
+
+    - uses: actions/upload-artifact@v7
+      with:
+        name: package-tarball
+        path: irori-idbfs-*.tgz

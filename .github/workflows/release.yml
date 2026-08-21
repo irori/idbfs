@@ -1,0 +1,66 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Emscripten version to release (blank = latest release)'
+        type: string
+
+permissions:
+  id-token: write  # npm Trusted Publishing (OIDC)
+  contents: write  # push the release commit and tag
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Resolve Emscripten version
+      id: emsdk
+      env:
+        GH_TOKEN: ${{ github.token }}
+        INPUT_VERSION: ${{ inputs.version }}
+      run: |
+        VERSION="${INPUT_VERSION:-$(gh api repos/emscripten-core/emscripten/releases/latest --jq .tag_name)}"
+        echo "version=${VERSION#v}" >> "$GITHUB_OUTPUT"
+
+    - uses: actions/cache@v5
+      with:
+        path: emsdk-cache
+        key: ${{ steps.emsdk.outputs.version }}-${{ runner.os }}
+
+    - uses: emscripten-core/setup-emsdk@v16
+      with:
+        version: ${{ steps.emsdk.outputs.version }}
+        actions-cache-folder: emsdk-cache
+
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Update version and changelog
+      env:
+        VERSION: ${{ steps.emsdk.outputs.version }}
+      run: |
+        npm version "$VERSION" --no-git-tag-version
+        { printf '## %s - %s\n- Rebuilt with Emscripten %s\n\n' \
+            "$VERSION" "$(date -u +%F)" "$VERSION"; cat CHANGELOG.md; } > CHANGELOG.new
+        mv CHANGELOG.new CHANGELOG.md
+
+    - name: Build and publish
+      run: |
+        npm ci
+        npm run build
+        npm publish
+
+    - name: Commit and tag
+      env:
+        VERSION: ${{ steps.emsdk.outputs.version }}
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git commit -am "v$VERSION"
+        git tag "v$VERSION"
+        git push origin "HEAD:${{ github.ref_name }}" "refs/tags/v$VERSION"
