@@ -1,3 +1,6 @@
+## 6.0.8 - 2026-08-21
+- Rebuilt with Emscripten 6.0.8
+
 ## 6.0.0 - 2026-06-15
 - The version number now tracks the Emscripten version used to build the library
 - Rebuilt with Emscripten 6.0.0
