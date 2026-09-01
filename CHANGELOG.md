@@ -1,3 +1,6 @@
+## 6.0.9 - 2026-09-01
+- Rebuilt with Emscripten 6.0.9
+
 ## 6.0.8 - 2026-08-21
 - Rebuilt with Emscripten 6.0.8
 
