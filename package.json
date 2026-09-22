@@ -14,7 +14,8 @@
   "type": "module",
   "types": "idbfs.d.ts",
   "scripts": {
-    "build": "make"
+    "build": "make",
+    "test": "node --test test.mjs"
   },
   "license": "Unlicense"
 }

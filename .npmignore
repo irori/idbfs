@@ -1,5 +1,7 @@
 Makefile
 empty.c
+idbfs.wasm
+test.mjs
 irori-idbfs-*.tgz
 .github
 emsdk-cache
