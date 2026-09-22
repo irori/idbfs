@@ -1,5 +1,6 @@
 ## 6.0.10 - 2026-09-22
 - Rebuilt with Emscripten 6.0.10
+- Replaced the deprecated WASM=0 emcc setting with SINGLE_FILE=1
 
 ## 6.0.9 - 2026-09-01
 - Rebuilt with Emscripten 6.0.9
